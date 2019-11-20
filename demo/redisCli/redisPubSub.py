@@ -3,3 +3,4 @@
 # @Author  : Ian Leto
 # @File    : redisPubSub.py
 # 干啥的    : 发布/订阅
+from demo.redisCli.redisCli import new_redis_client
