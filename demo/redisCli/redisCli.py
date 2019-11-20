@@ -5,11 +5,20 @@
 # 干啥的    :
 
 import redis
-import datetime
 import time
+
+
+class NewRedisCli:
+    def __init__(self, host: str = '39.108.86.208', port: int = 6379, db: int = 0):
+        pass
+
 
 cli = redis.Redis(host='39.108.86.208', port=6379, db=0)
 cli.set("admin", 'IanLeto')
+
+
+def new_redis_client(host: str = '39.108.86.208', port: int = 6379, db: int = 0) -> redis.Redis:
+    return redis.Redis(host=host, port=port, db=db)
 
 
 def redis_consumer():
@@ -23,8 +32,3 @@ def redis_producer():
         time.sleep(1)
         count += 1
         print(cli.lpush("tList", count))
-
-
-if __name__ == '__main__':
-    redis_consumer()
-    redis_producer()
