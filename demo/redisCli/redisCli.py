@@ -13,6 +13,9 @@ cli.set("admin", 'IanLeto')
 
 
 def new_redis_sentinel() -> redis.sentinel:
+
+
+
     return Sentinel([('39.108.86.208', 26379)])
 
 
