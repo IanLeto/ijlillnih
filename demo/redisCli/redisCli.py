@@ -4,6 +4,7 @@
 # @File    : redisCli.py
 # 干啥的    :
 
+# ttttt
 import redis
 import time
 from redis.sentinel import Sentinel
