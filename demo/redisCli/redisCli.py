@@ -6,15 +6,14 @@
 
 import redis
 import time
-
-
-class NewRedisCli:
-    def __init__(self, host: str = '39.108.86.208', port: int = 6379, db: int = 0):
-        pass
-
+from redis.sentinel import Sentinel
 
 cli = redis.Redis(host='39.108.86.208', port=6379, db=0)
 cli.set("admin", 'IanLeto')
+
+
+def new_redis_sentinel() -> redis.sentinel:
+    return Sentinel([('39.108.86.208', 26379)])
 
 
 def new_redis_client(host: str = '39.108.86.208', port: int = 6379, db: int = 0) -> redis.Redis:
