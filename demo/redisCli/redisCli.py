@@ -4,7 +4,6 @@
 # @File    : redisCli.py
 # 干啥的    :
 
-# ttttt
 import redis
 import time
 from redis.sentinel import Sentinel
@@ -14,9 +13,6 @@ cli.set("admin", 'IanLeto')
 
 
 def new_redis_sentinel() -> redis.sentinel:
-
-
-
     return Sentinel([('39.108.86.208', 26379)])
 
 
