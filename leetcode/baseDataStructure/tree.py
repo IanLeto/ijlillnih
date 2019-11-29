@@ -67,9 +67,34 @@ def pre_order_traverse_recursive_to_node_list(root_node: TreeNode) -> list:
     return result
 
 
+# 广度优先
+'''
+    思路 使用两个队列 一个纯粹记录结果res
+    另一个使用pop的方式来暂存结果
+'''
+
+
+def BFS(root_node: TreeNode) -> list:
+    result = [root_node]
+    res = [root_node]
+    while len(result) != 0:
+        for i in range(len(result)):
+            node = result.pop(0)
+            if node.left is not None:
+                result.append(node.left)
+                res.append(node.left)
+
+            if node.right is not None:
+                result.append(node.right)
+                res.append(node.right)
+
+    return res
+
+
 if __name__ == '__main__':
     root = TreeNode('root')
     print(root())
     root = create(root)
     pre_order_traverse_recursive(root)
     print([i.val for i in pre_order_traverse_recursive_to_node_list(root)])
+    print([i.val for i in BFS(root_node=root)])
