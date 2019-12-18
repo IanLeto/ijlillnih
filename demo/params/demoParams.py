@@ -3,6 +3,7 @@
 # @Author  : Ian Leto
 # @File    : demoParams.py
 # 干啥的    : python 参数示例
+import redis
 
 def demo_params():
     pass
