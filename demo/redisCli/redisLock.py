@@ -7,8 +7,8 @@ cli = redis.Redis()
 
 
 def list_item(conn, item_id, seller_id, price):
-    pipe.watch(u'localhost:1222')
-    if not pipe.sismember(item_id, 'kk'):
+    pipe.watch(u'event')
+    if not pipe.sismember(item_id, 'test'):
         pipe.unwatch()
         return None
 

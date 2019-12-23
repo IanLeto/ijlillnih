@@ -36,10 +36,10 @@ class RedisBackend:
     count: int = 0
 
 
-if __name__ == '__main__':
-    r = RedisBackend(address="", cli=new_redis_client(), pre="test")
-    if r.cli.setnx("admin", "root"):
-        print("unlock")
+# if __name__ == '__main__':
+#     r = RedisBackend(address="", cli=new_redis_client(), pre="test")
+#     if r.cli.setnx("admin", "root"):
+#         print("unlock")
 
 
 def redis_consumer():
@@ -53,3 +53,29 @@ def redis_producer():
         time.sleep(1)
         count += 1
         print(cli.lpush("tList", count))
+
+    # item_list = dict(zip(list('N' * 5), range(1, 5)))
+
+
+def item_watch():
+    user = 'user'
+    itemid = set("user", "user2")
+    end = time.time() + 5
+    pipe = new_redis_client().pipeline()
+    while time.time() < end:
+        try:
+            pipe.watch(user)
+            if not pipe.sismember(user, itemid):
+                pipe.unwatch()
+                return None
+            pipe.multi()
+            time.sleep(2)
+            pipe.execute()
+            return True
+        except redis.exceptions.WatchError:
+            pass
+    return False
+
+
+if __name__ == '__main__':
+    print(item_watch())
