@@ -1,4 +1,3 @@
-from leetcode.baseDataStructure.nodelist import LinkList
 from leetcode.baseDataStructure.tree import TreeNode, create
 
 
