@@ -20,14 +20,17 @@ class Solution:
             return l1
         if l1.val > l2.val:
             l1, l2 = l2, l1
-        while l1 is not None:
-            if l1.val < l2.val:
-                if l1.next.val < l2.next.val:
-                    pass
-                else:
-                    temp = l2
-                    l1.next = l2
-                    l2.next = l1.next
-                    l2 = temp
-            l1 = l1.next
-        return l1
+        prevhead = ListNode(-1)
+        prev = prevhead
+        while l1 and l2:
+            if l1.val <= l2.val:
+                prev.next = l1
+                l1 = l1.next
+            else:
+                prev.next = l2
+                l2 = l2.next
+            prev = prev.next
+        prev.next = l1 if l1 is not None else l2
+        return prevhead.next
+
+
