@@ -10,6 +10,7 @@
 #         self.val = x
 #         self.next = None
 from leetcode.baseDataStructure.nodelist import ListNode
+import dynaconf
 
 
 class Solution:

@@ -90,6 +90,24 @@ def BFS(root_node: TreeNode) -> list:
 
     return res
 
+# 二叉树层序遍历
+def level_order(self, root_node: TreeNode):
+    levels = []
+    if not root_node:
+        return levels
+
+    def helper(node, level):
+        if len(levels) == level:
+            levels.append([])
+        levels[level].append(node.val)
+        if node.left:
+            helper(node.left, level + 1)
+        if node.right:
+            helper(node.left, level + 1)
+
+    helper(root_node, levels)
+    return levels
+
 
 if __name__ == '__main__':
     root = TreeNode('root')

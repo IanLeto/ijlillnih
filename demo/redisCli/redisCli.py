@@ -78,4 +78,6 @@ def item_watch():
 
 
 if __name__ == '__main__':
-    print(item_watch())
+    x = RedisBackend()
+    # print(x.pre)
+    # print(item_watch())

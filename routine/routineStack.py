@@ -3,13 +3,26 @@
 # @Author  : Ian Leto
 # @File    : routineStack.py
 # 干啥的    :
+from time import time
+
+
+def IanTimeCalc(func):
+    start = time()
+    result = func()
+    stop = time()
+    run_time = str(stop - start)
+
+    return run_time
+
 
 class Solution:
+    @IanTimeCalc
     def isValid(self, s: str) -> bool:
         list1 = ['(', '{', '[']
         list2 = [')', ']', '}']
         list3 = ['()', '[]', '{}']
         l = []
+
         for i in s:
             if i in list1:
                 l.append(i)
