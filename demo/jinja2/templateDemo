@@ -1,0 +1,8 @@
+<p>
+    this is dict:{{ dDict['notebook'] }}
+</p>
+
+
+<p>
+    this obj:{{ region.get_id() }}
+</p>
