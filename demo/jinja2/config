@@ -1,5 +1,0 @@
-version: '2'
-services:
-    nginx:
-        ports:
-        - {{ node.node1.host }} : 80

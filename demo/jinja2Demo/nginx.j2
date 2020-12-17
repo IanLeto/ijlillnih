@@ -1,0 +1,20 @@
+version: '2'
+services:
+nginx:
+image: nginx:11
+container_name: nginx
+ports:
+- {{ services.nginx.config.address }}:80
+volumes:
+- {% for node in nodes %}
+    {% if "nginx" in nodes[node].module %}
+        {{ nodes[node].basedir }}
+    {% endif %}
+{% endfor %}
+- /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
+restart: always
+networks:
+- default_bridge
+networks:
+default_bridge:
+external: true

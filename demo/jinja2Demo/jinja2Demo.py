@@ -15,6 +15,7 @@ dDict = {
     'playstation': 'ps4'
 }
 
+
 # 变量替换
 class Region:
     def __init__(self, region_id: str = ''):

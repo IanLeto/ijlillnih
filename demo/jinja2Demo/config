@@ -1,0 +1,20 @@
+version: '2'
+services:
+nginx:
+image: nginx:11
+container_name: nginx
+ports:
+- 10.0.0.1:80
+volumes:
+- 
+    
+
+    
+
+- /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
+restart: always
+networks:
+- default_bridge
+networks:
+default_bridge:
+external: true

@@ -1,0 +1,21 @@
+nodes:
+  node1:
+    host: 10.0.0.1
+    basedir: /data1
+    modules:
+      - mysql
+      - nginx
+  node2:
+    host: 10.0.0.2
+    basedir: /data2
+    modules:
+      - nginx
+services:
+  mysql:
+    config:
+      port: 3306
+      password: 123456
+  nginx:
+    config:
+      address: 10.0.0.1
+      port: 8088
