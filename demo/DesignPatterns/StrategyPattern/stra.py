@@ -2,7 +2,7 @@
 # @Time    : 2021/1/21 6:41 下午
 # @Author  : Ian Leto
 # @File    : stra.py
-# 干啥的    : 策略模式
+# 干啥的    : 策略模式使用方式
 
 import os
 

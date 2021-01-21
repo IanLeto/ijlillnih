@@ -1,4 +1,4 @@
-nodes:
+nodes:git
   node1:
     host: 10.0.0.1
     basedir: /data1
