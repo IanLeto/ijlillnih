@@ -9,24 +9,45 @@ from jinja2 import Template
 
 env = Environment(loader=PackageLoader)
 dDict = {
-    'sausage': "absolutely",
-    'notebook': 'mac',
-    'money': '1',
-    'playstation': 'ps4'
+    "syn_info": [
+        {
+            "cluster_id": 2105,
+            "syn_addr": [
+                {"addr": "172.21.48.25:12345"},
+                {"addr": "172.21.48.28:12345"},
+                {"addr": "10.68.80.138:12345"},
+                {"addr": "10.68.80.139:12345"}
+            ]
+        }
+    ]
 }
 
 
-# 变量替换
-class Region:
-    def __init__(self, region_id: str = ''):
-        self.region_id = region_id
-
-    def get_id(self):
-        return self.region_id
+# with open('templateDemo', 'r')as f:
+#     buffer = f.read()
+#     template = Template(buffer)
+#     print(template.render(dDict))
 
 
-with open('templateDemo', 'r')as f:
-    buffer = f.read()
-    template = Template(buffer)
-    region = Region(region_id='1')
-    print(template.render(dDict=dDict, region=region))
+def parse_config_with_business_template(config: str, business_data: dict):
+    template = Template(config)
+
+    result = template.render(business_data)
+    return result
+
+
+if __name__ == '__main__':
+    ss = parse_config_with_business_template(
+        # config='{\"syn_info\":[{\"cluster_id\":{{cluster_id}},\"syn_addr\":[{%-for listen_ip in listen_ip_list%}{\"addr\":\"{{listen_ip}}:{{udp_port}}\"}{%if not loop.last%},{%endif%}{%-endfor%}]}]}',
+
+        # 配置文件
+        config='{"db": {{主库 or 从库 }}}',
+        # 数据源
+        business_data=
+        {
+            "主库": 'ucloud:ucloud.cn0@tcp(172.30.30.163:3206)/unetwork?charset=utf8',
+            "从库": 'ucloud:ucloud.cn0@tcp(172.30.30.118:3206)/unetwork?charset=utf8',
+        }
+
+    )
+    print(ss)
